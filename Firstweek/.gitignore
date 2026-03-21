@@ -1,0 +1,7 @@
+vendor/
+*.exe
+*.test
+*.out
+coverage.out
+.idea/
+.vscode/
