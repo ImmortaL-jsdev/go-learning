@@ -37,13 +37,13 @@ func main() {
 		*bytesFlag = true
 	}
 
-	if *linesFlag == true {
+	if *linesFlag {
 		fmt.Printf("%8d", lines)
 	}
-	if *wordsFlag == true {
+	if *wordsFlag {
 		fmt.Printf("%8d", words)
 	}
-	if *bytesFlag == true {
+	if *bytesFlag {
 		fmt.Printf("%8d", bytes)
 	}
 
