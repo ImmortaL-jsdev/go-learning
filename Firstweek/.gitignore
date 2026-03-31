@@ -5,3 +5,4 @@ vendor/
 coverage.out
 .idea/
 .vscode/
+test.txt

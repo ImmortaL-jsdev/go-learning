@@ -47,5 +47,5 @@ func main() {
 		fmt.Printf("%8d", bytes)
 	}
 
-	fmt.Printf("%s\n", filename)
+	fmt.Printf(" %s\n", filename)
 }
