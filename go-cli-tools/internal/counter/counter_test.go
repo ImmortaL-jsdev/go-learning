@@ -86,7 +86,7 @@ func TestCountFile(t *testing.T) {
 			if err != nil {
 				t.Fatalf("failed to create temp file: %v", err)
 			}
-			defer os.Remove(fileName)
+			defer os.Remove(fileName) //nolint:errcheck
 			lines, words, bytes, err := CountFile(fileName)
 
 			if err != nil {
@@ -116,7 +116,7 @@ func BenchmarkCountFile(b *testing.B) {
 	if err != nil {
 		b.Fatalf("failed to create file: %v", err)
 	}
-	defer os.Remove(fileName)
+	defer os.Remove(fileName) //nolint:errcheck
 
 	b.ResetTimer()
 

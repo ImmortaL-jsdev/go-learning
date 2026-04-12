@@ -27,7 +27,7 @@ func downloadFile(ctx context.Context, url string, index int) error {
 	if err != nil {
 		return err
 	}
-	defer resp.Body.Close()
+	defer resp.Body.Close() //nolint:errcheck
 
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("bad status: %s", resp.Status)
@@ -38,7 +38,7 @@ func downloadFile(ctx context.Context, url string, index int) error {
 	if err != nil {
 		return err
 	}
-	defer file.Close()
+	defer file.Close() //nolint:errcheck
 
 	_, err = io.Copy(file, resp.Body)
 	if err != nil {
@@ -68,7 +68,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	defer file.Close()
+	defer file.Close() //nolint:errcheck
 
 	scanner := bufio.NewScanner(file)
 
@@ -107,7 +107,7 @@ func main() {
 			os.Exit(1)
 		}
 	} else {
-		defer downFile.Close()
+		defer downFile.Close() //nolint:errcheck
 		scanner := bufio.NewScanner(downFile)
 		for scanner.Scan() {
 			line := scanner.Text()
@@ -166,7 +166,7 @@ func main() {
 
 	}
 	for i, url := range urls {
-		if downloaded[url] == true {
+		if downloaded[url] {
 			continue
 		} else {
 			jobs <- struct {
@@ -183,7 +183,7 @@ func main() {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Ошибка открытия downloaded.txt для записи: %v\n", err)
 	} else {
-		defer outFile.Close()
+		defer outFile.Close() //nolint:errcheck
 		for url := range success {
 			if _, err := fmt.Fprintf(outFile, "%s\n", url); err != nil {
 				fmt.Fprintf(os.Stderr, "Ошибка записи URL %s: %v\n", url, err)

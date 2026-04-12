@@ -13,7 +13,7 @@ func CountFile(filename string) (int, int, int64, error) {
 		return 0, 0, 0, err
 
 	}
-	defer file.Close()
+	defer file.Close() //nolint:errcheck
 
 	info, err := file.Stat()
 

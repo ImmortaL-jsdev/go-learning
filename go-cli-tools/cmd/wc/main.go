@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/ImmortaL-jsdev/go-learning/Firstweek/internal/counter"
+	"github.com/ImmortaL-jsdev/go-learning/go-cli-tools/internal/counter"
 )
 
 func main() {
